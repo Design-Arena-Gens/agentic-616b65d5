@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gen Z Statue of Liberty</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        .statue-container {
+            position: relative;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+        }
+
+        /* Crown */
+        .crown {
+            position: relative;
+            width: 200px;
+            height: 120px;
+            margin-bottom: -20px;
+            z-index: 10;
+        }
+
+        .crown-base {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            height: 30px;
+            background: linear-gradient(135deg, #ffd700, #ffed4e, #ffd700);
+            border-radius: 50px 50px 0 0;
+            border: 3px solid #ff6b9d;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6),
+                        inset 0 -5px 10px rgba(255, 107, 157, 0.3);
+        }
+
+        .crown-spike {
+            position: absolute;
+            bottom: 25px;
+            width: 30px;
+            height: 80px;
+            background: linear-gradient(180deg, #ffd700, #ffed4e);
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+            border: 2px solid #ff6b9d;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+
+        .crown-spike:nth-child(2) { left: 20px; height: 60px; }
+        .crown-spike:nth-child(3) { left: 55px; height: 95px; }
+        .crown-spike:nth-child(4) { left: 90px; height: 75px; }
+        .crown-spike:nth-child(5) { left: 125px; height: 95px; }
+        .crown-spike:nth-child(6) { left: 160px; height: 60px; }
+
+        .jewel {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00f5ff, #0077ff);
+            box-shadow: 0 0 15px rgba(0, 245, 255, 0.8),
+                        inset -3px -3px 6px rgba(0, 119, 255, 0.6);
+            animation: sparkle 2s infinite alternate;
+        }
+
+        .jewel:nth-child(7) { left: 30px; bottom: 38px; animation-delay: 0.3s; }
+        .jewel:nth-child(8) { left: 65px; bottom: 50px; animation-delay: 0.6s; background: linear-gradient(135deg, #ff00ff, #ff77ff); }
+        .jewel:nth-child(9) { left: 100px; bottom: 43px; animation-delay: 0.9s; }
+        .jewel:nth-child(10) { left: 135px; bottom: 50px; animation-delay: 1.2s; background: linear-gradient(135deg, #00ff88, #00ffcc); }
+        .jewel:nth-child(11) { left: 170px; bottom: 38px; animation-delay: 1.5s; }
+
+        @keyframes sparkle {
+            0%, 100% {
+                transform: scale(1);
+                box-shadow: 0 0 15px currentColor, inset -3px -3px 6px rgba(0, 0, 0, 0.3);
+            }
+            50% {
+                transform: scale(1.3);
+                box-shadow: 0 0 25px currentColor, inset -3px -3px 6px rgba(255, 255, 255, 0.5);
+            }
+        }
+
+        /* Head */
+        .head {
+            width: 180px;
+            height: 200px;
+            background: linear-gradient(135deg, #a8e6cf, #dcedc8);
+            border-radius: 50% 50% 45% 45%;
+            position: relative;
+            border: 4px solid #ff6b9d;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Face features */
+        .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .eyes {
+            position: absolute;
+            top: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 40px;
+        }
+
+        .eye {
+            width: 25px;
+            height: 35px;
+            background: #2c3e50;
+            border-radius: 50%;
+            position: relative;
+            animation: blink 4s infinite;
+        }
+
+        .eye::after {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        @keyframes blink {
+            0%, 49%, 51%, 100% { height: 35px; }
+            50% { height: 2px; }
+        }
+
+        .sunglasses {
+            position: absolute;
+            top: 65px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 40px;
+        }
+
+        .sunglass-lens {
+            position: absolute;
+            width: 45px;
+            height: 35px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 10px;
+            border: 3px solid #ff6b9d;
+            box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .sunglass-lens:first-child { left: 0; }
+        .sunglass-lens:last-child { right: 0; }
+
+        .sunglass-bridge {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 4px;
+            background: #ff6b9d;
+            border-radius: 2px;
+        }
+
+        .mouth {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 25px;
+            border: 4px solid #ff6b9d;
+            border-top: none;
+            border-radius: 0 0 50px 50px;
+        }
+
+        /* Body */
+        .body {
+            width: 250px;
+            height: 300px;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            border-radius: 20px 20px 100px 100px;
+            position: relative;
+            margin-top: 10px;
+            border: 4px solid #ff6b9d;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        /* Torch arm */
+        .arm-torch {
+            position: absolute;
+            top: 80px;
+            right: -80px;
+            width: 100px;
+            height: 25px;
+            background: linear-gradient(135deg, #a8e6cf, #dcedc8);
+            border-radius: 15px;
+            transform: rotate(-45deg);
+            border: 3px solid #ff6b9d;
+        }
+
+        .torch {
+            position: absolute;
+            top: -60px;
+            right: -20px;
+            width: 40px;
+            height: 80px;
+        }
+
+        .torch-handle {
+            width: 15px;
+            height: 60px;
+            background: linear-gradient(135deg, #8b4513, #a0522d);
+            margin: 0 auto;
+            border-radius: 5px;
+            border: 2px solid #ff6b9d;
+        }
+
+        .torch-flame {
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 50px;
+            background: linear-gradient(180deg, #ff6b6b, #ffd93d, #ff6b6b);
+            border-radius: 50% 50% 0 0;
+            animation: flicker 1.5s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0%, 100% {
+                transform: translateX(-50%) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translateX(-50%) scale(1.1, 0.9);
+                opacity: 0.8;
+            }
+        }
+
+        /* Phone arm */
+        .arm-phone {
+            position: absolute;
+            top: 80px;
+            left: -80px;
+            width: 100px;
+            height: 25px;
+            background: linear-gradient(135deg, #a8e6cf, #dcedc8);
+            border-radius: 15px;
+            transform: rotate(45deg);
+            border: 3px solid #ff6b9d;
+        }
+
+        .phone {
+            position: absolute;
+            top: -50px;
+            left: -30px;
+            width: 50px;
+            height: 90px;
+            background: #2c3e50;
+            border-radius: 8px;
+            border: 3px solid #ff6b9d;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .phone-screen {
+            position: absolute;
+            top: 8px;
+            left: 5px;
+            width: 36px;
+            height: 70px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 4px;
+            animation: screenGlow 2s infinite alternate;
+        }
+
+        @keyframes screenGlow {
+            0%, 100% {
+                box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 20px rgba(102, 126, 234, 1);
+            }
+        }
+
+        /* Emojis floating */
+        .emoji {
+            position: absolute;
+            font-size: 30px;
+            animation: float 3s infinite ease-in-out;
+        }
+
+        .emoji:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
+        .emoji:nth-child(2) { top: 20%; right: 10%; animation-delay: 0.5s; }
+        .emoji:nth-child(3) { bottom: 20%; left: 15%; animation-delay: 1s; }
+        .emoji:nth-child(4) { bottom: 10%; right: 15%; animation-delay: 1.5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
+        }
+
+        .title {
+            text-align: center;
+            margin-top: 40px;
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(255, 107, 157, 0.8),
+                         0 0 40px rgba(102, 126, 234, 0.6);
+            animation: titleGlow 2s infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(255, 107, 157, 0.8),
+                             0 0 40px rgba(102, 126, 234, 0.6);
+            }
+            50% {
+                text-shadow: 0 0 30px rgba(255, 107, 157, 1),
+                             0 0 60px rgba(102, 126, 234, 1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="emoji">💅</div>
+    <div class="emoji">✨</div>
+    <div class="emoji">💖</div>
+    <div class="emoji">🔥</div>
+
+    <div class="container">
+        <div class="statue-container">
+            <div class="crown">
+                <div class="crown-spike"></div>
+                <div class="crown-spike"></div>
+                <div class="crown-spike"></div>
+                <div class="crown-spike"></div>
+                <div class="crown-spike"></div>
+                <div class="crown-spike"></div>
+                <div class="crown-base"></div>
+                <div class="jewel"></div>
+                <div class="jewel"></div>
+                <div class="jewel"></div>
+                <div class="jewel"></div>
+                <div class="jewel"></div>
+            </div>
+
+            <div class="head">
+                <div class="face">
+                    <div class="eyes">
+                        <div class="eye"></div>
+                        <div class="eye"></div>
+                    </div>
+                    <div class="sunglasses">
+                        <div class="sunglass-lens"></div>
+                        <div class="sunglass-bridge"></div>
+                        <div class="sunglass-lens"></div>
+                    </div>
+                    <div class="mouth"></div>
+                </div>
+            </div>
+
+            <div class="body">
+                <div class="arm-torch">
+                    <div class="torch">
+                        <div class="torch-flame"></div>
+                        <div class="torch-handle"></div>
+                    </div>
+                </div>
+
+                <div class="arm-phone">
+                    <div class="phone">
+                        <div class="phone-screen"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h1 class="title">Gen Z Liberty</h1>
+    </div>
+</body>
+</html>
